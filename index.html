@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Portal</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>My Alibaba Backend Test</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        #result { font-weight: bold; color: green; margin-top: 20px; }
+        button { padding: 10px 20px; cursor: pointer; }
+    </style>
 </head>
 <body>
-<h1>My Free Web Portal</h1>
-<p>Hosted on GitHub + Cloudflare + Alibaba Cloud</p>
+    <h1>Connection Test</h1>
+    <button onclick="fetchBackend()">Connect to Alibaba Cloud</button>
+    
+    <div id="result">Click the button to test...</div>
+
+    <script>
+        async function fetchBackend() {
+            const statusDiv = document.getElementById('result');
+            statusDiv.innerText = "Connecting...";
+
+            // REPLACE THIS URL with your actual .fcapp.run link
+            const url = "https://your-unique-id.region.fcapp.run/";
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                // This displays the "message" from your JSON on the screen
+                statusDiv.innerText = "Response: " + data.message;
+                console.log("Full Data:", data);
+            } catch (error) {
+                statusDiv.innerText = "Error: Could not connect.";
+                statusDiv.style.color = "red";
+                console.error("Fetch error:", error);
+            }
+        }
+    </script>
 </body>
+</html>
