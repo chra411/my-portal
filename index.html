@@ -7,156 +7,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0b0e14;
+            --bg-color: #0d1117;
             --card-bg: #161b22;
-            --accent-color: #58a6ff;
-            --text-main: #adbac7;
-            --text-bright: #ffffff;
-            --border-color: #444c56;
+            --accent: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-white: #f0f6fc;
+            --border: #30363d;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: -apple-system, system-ui, sans-serif;
             margin: 0;
-            padding: 0;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
-        /* Header Section */
         header {
             text-align: center;
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
             margin-bottom: 40px;
         }
 
-        h1 {
-            color: var(--text-bright);
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 600;
-        }
+        h1 { color: var(--text-white); font-size: 2.5rem; margin: 0; }
+        .tagline { color: var(--accent); font-size: 1.2rem; margin-top: 8px; }
 
-        .subtitle {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-top: 10px;
-            font-weight: 400;
-        }
-
-        .contact-info {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #768390;
-        }
-
-        /* Card System */
         .section-title {
-            color: var(--text-bright);
-            font-size: 1.5rem;
-            margin: 30px 0 15px 0;
+            color: var(--text-white);
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 20px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
         }
+        .card:hover { border-color: var(--accent); }
 
-        .card:hover {
-            border-color: var(--accent-color);
-        }
-
-        /* Content Styling */
         .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .role-title {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
+        .job-title { color: var(--accent); font-weight: 600; font-size: 1.1rem; }
+        .company { color: var(--text-white); font-weight: 500; }
+        .meta { font-size: 0.85rem; color: #8b949e; text-align: right; }
 
-        .company-name {
-            color: var(--text-bright);
-            font-weight: 500;
-        }
-
-        .date-location {
-            font-size: 0.85rem;
-            color: #768390;
-        }
-
-        .description {
-            margin-top: 12px;
-            font-size: 0.95rem;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .skill-badge {
-            background-color: rgba(88, 166, 255, 0.1);
-            color: var(--accent-color);
+        .description { font-size: 0.95rem; margin-top: 10px; }
+        
+        .pill-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .pill {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
             border: 1px solid rgba(88, 166, 255, 0.2);
-            padding: 2px 10px;
-            border-radius: 12px;
+            padding: 3px 12px;
+            border-radius: 20px;
             font-size: 0.8rem;
         }
 
-        /* Footer & Backend */
         footer {
             text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
-            color: #768390;
-            font-size: 0.85rem;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
         }
 
-        .status-btn {
+        .status-area { margin-top: 20px; }
+        .mini-btn {
             background: transparent;
-            border: 1px solid var(--border-color);
-            color: #768390;
+            border: 1px solid var(--border);
+            color: #8b949e;
             padding: 8px 16px;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-top: 20px;
             font-size: 0.8rem;
-            transition: 0.2s;
         }
-
-        .status-btn:hover {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        #api-response {
-            margin-top: 10px;
-            font-family: monospace;
-            font-size: 0.75rem;
-        }
+        .mini-btn:hover { border-color: var(--accent); color: var(--accent); }
     </style>
 </head>
 <body>
@@ -164,109 +101,107 @@
 <div class="container">
     <header>
         <h1>Christopher Aruldoss</h1>
-        <div class="subtitle">Customer Delivery Manager | Solution Architect</div>
-        <div class="contact-info">
-            Dubai, UAE • Golden Visa Holder • christopher.aruldoss@gmail.com
-        </div>
+        <div class="tagline">Customer Delivery Manager | Solution Architect</div>
+        <p style="font-size: 0.9rem; color: #8b949e;">Dubai, UAE • Golden Visa Holder • christopher.aruldoss@gmail.com</p>
     </header>
 
-    <div class="section-title"><i class="fas fa-user"></i> About Me</div>
+    <div class="section-title"><i class="fas fa-id-card"></i> Executive Summary</div>
     <div class="card">
         <p class="description">
-            Strategic Techno-Commercial leader with over 20 years of experience in the telecom and cloud sectors. 
-            I specialize in orchestrating multi-million dollar portfolios for Tier-1 operators, with a proven track record 
-            of delivering Next-Gen Wi-Fi 6 & 7 solutions and securing over <strong>$70M in new business revenue</strong>.
+            Techno-Commercial leader with over 20 years of experience in the telecom and cloud domains. 
+            I have a proven record of managing high-value portfolios and accelerating the delivery of 
+            Next-Gen Wi-Fi 6 and 7 solutions for Tier-1 operators. Expertise in bridging complex technical 
+            innovation with multi-million dollar business growth.
         </p>
     </div>
 
-    <div class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</div>
-    
-    <div class="card">
-        <div class="card-header">
-            <div>
-                <div class="role-title">Customer Project Manager</div>
-                <div class="company-name">Vantiva Technologies</div>
-            </div>
-            <div class="date-location">Jan 2024 — Present<br>Dubai, UAE</div>
-        </div>
-        <p class="description">
-            Directly overseeing a <strong>$15M Portfolio</strong> focusing on Next-Gen Broadband solutions. 
-            Managing the end-to-end lifecycle for 7 product lines and a fleet of over 1M+ devices across 
-            diverse software ecosystems including RDK-B and Android AOSP.
-        </p>
-        <div class="skills-container">
-            <span class="skill-badge">P&L Management</span>
-            <span class="skill-badge">Wi-Fi 7</span>
-            <span class="skill-badge">FWA</span>
-            <span class="skill-badge">Lifecycle Strategy</span>
-        </div>
-    </div>
+    <div class="section-title"><i class="fas fa-briefcase"></i> Experience</div>
 
     <div class="card">
         <div class="card-header">
             <div>
-                <div class="role-title">Senior Solution Architect</div>
-                <div class="company-name">Huawei Technologies</div>
+                <div class="job-title">Customer Project Manager</div>
+                <div class="company">Vantiva Technologies</div>
             </div>
-            <div class="date-location">2011 — 2023<br>Dubai, UAE</div>
+            <div class="meta">Jan 2024 — Present<br>Dubai, UAE</div>
         </div>
         <p class="description">
-            Architected comprehensive IPTV/OTT ecosystems for Tier-1 operators. Led high-stakes RFP responses 
-            that secured $70M in revenue by integrating complex Big Data Analytics and AI-driven 
-            recommendation engines into operator stacks.
+            Directly managing a **$15M Portfolio** of broadband and video products. I oversee the 
+            full-lifecycle deployment of Next-Gen Wi-Fi 7 gateways and Mesh systems, managing 
+            cross-functional teams to ensure robust P&L margins and technical excellence.
         </p>
-        <div class="skills-container">
-            <span class="skill-badge">IPTV/OTT</span>
-            <span class="skill-badge">Big Data</span>
-            <span class="skill-badge">BSS/OSS Integration</span>
-            <span class="skill-badge">RFP Leadership</span>
+        <div class="pill-container">
+            <span class="pill">Wi-Fi 7</span>
+            <span class="pill">Project Delivery</span>
+            <span class="pill">P&L Management</span>
+            <span class="pill">Tier-1 Accounts</span>
         </div>
     </div>
 
-    <div class="section-title"><i class="fas fa-code"></i> Technical Expertise</div>
     <div class="card">
-        <div class="skills-container">
-            <span class="skill-badge">TR-069 / USP</span>
-            <span class="skill-badge">Docker</span>
-            <span class="skill-badge">IPv4/IPv6</span>
-            <span class="skill-badge">OpenWrt</span>
-            <span class="skill-badge">Alibaba Cloud</span>
-            <span class="skill-badge">Azure</span>
-            <span class="skill-badge">SMSC/VAS</span>
-            <span class="skill-badge">Churn Management</span>
+        <div class="card-header">
+            <div>
+                <div class="job-title">Senior Solution Architect</div>
+                <div class="company">Huawei Technologies</div>
+            </div>
+            <div class="meta">2011 — 2023<br>Dubai, UAE</div>
+        </div>
+        <p class="description">
+            Architected large-scale IPTV and OTT ecosystems. Successfully secured **$70M in new revenue** by leading complex RFP responses and designing bespoke cloud-integrated solutions that drove 
+            customer experience and real-time monitoring.
+        </p>
+        <div class="pill-container">
+            <span class="pill">Solution Architecture</span>
+            <span class="pill">IPTV/OTT</span>
+            <span class="pill">Big Data</span>
+            <span class="pill">Business Development</span>
+        </div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-tools"></i> Technical Expertise</div>
+    <div class="card">
+        <div class="pill-container">
+            <span class="pill">Wi-Fi 7 / 6 / Mesh</span>
+            <span class="pill">Fixed Wireless Access (FWA)</span>
+            <span class="pill">RDK-B & OpenWrt</span>
+            <span class="pill">Alibaba Cloud</span>
+            <span class="pill">Azure</span>
+            <span class="pill">TR-069 / TR-369</span>
+            <span class="pill">Docker</span>
+            <span class="pill">BSS / OSS</span>
         </div>
     </div>
 
     <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
     <div class="card">
-        <div class="company-name">MBA in Marketing</div>
-        <div class="date-location">Bharthidasan University</div>
-        <div class="company-name" style="margin-top: 10px;">B.E. in Electronics & Communication</div>
-        <div class="date-location">Karunya Institute of Technology</div>
+        <p><strong>MBA in Marketing</strong> — Bharthidasan University</p>
+        <p style="margin-top: 10px;"><strong>B.E. in Electronics & Communication</strong> — Karunya Institute of Technology</p>
     </div>
 
     <footer>
-        <p>&copy; 2026 Christopher Aruldoss | Built with GitHub Pages</p>
-        <button class="status-btn" onclick="checkCloud()">Ping Alibaba Cloud Backend</button>
-        <div id="api-response">System Idle</div>
+        <p>&copy; 2026 Christopher Aruldoss | Powered by GitHub & Alibaba</p>
+        <div class="status-area">
+            <button class="mini-btn" onclick="checkStatus()">System Verification</button>
+            <div id="status-text" style="font-size: 0.75rem; margin-top: 10px; font-family: monospace;">System Idle</div>
+        </div>
     </footer>
 </div>
 
 <script>
-    async function checkCloud() {
-        const out = document.getElementById('api-response');
-        out.innerText = "Connecting...";
+    async function checkStatus() {
+        const out = document.getElementById('status-text');
+        out.innerText = "Querying Alibaba Backend...";
         
-        // REPLACE WITH YOUR ACTUAL ALIBABA URL
-        const url = "https://my-portfunction-xlswldvzbj.ap-southeast-1.fcapp.run";
+        // REPLACE with your Alibaba Cloud URL
+        const url = "https://your-id.region.fcapp.run/";
 
         try {
             const res = await fetch(url);
             const data = await res.json();
-            out.innerText = "Status: " + data.message + " | " + data.timestamp;
+            out.innerText = "Status: Online | " + data.timestamp;
             out.style.color = "#58a6ff";
         } catch (e) {
-            out.innerText = "Connection Failed: Ensure CORS is enabled on Alibaba.";
+            out.innerText = "Connection Failed. (Check Alibaba CORS settings)";
             out.style.color = "#f85149";
         }
     }
