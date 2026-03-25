@@ -7,173 +7,270 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #020617;
-            --card: #0f172a;
-            --accent: #38bdf8;
-            --text: #f8fafc;
-            --dim: #94a3b8;
+            --bg-color: #0b0e14;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-main: #adbac7;
+            --text-bright: #ffffff;
+            --border-color: #444c56;
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; line-height: 1.8; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 50px; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        nav a { color: var(--text); text-decoration: none; margin-left: 25px; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--accent); }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-        /* Hero */
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1), transparent); }
-        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; letter-spacing: -2px; font-weight: 800; }
-        .tagline { font-size: 1.4rem; color: var(--accent); margin-top: 10px; }
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        
-        h2 { font-size: 2rem; margin-bottom: 40px; color: var(--accent); display: flex; align-items: center; gap: 15px; }
+        h1 {
+            color: var(--text-bright);
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
 
-        .exp-card { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; transition: 0.3s; }
-        .exp-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .date { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: 400;
+        }
 
-        /* Skills & Tags */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .skill-list { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
-        .tag { display: inline-block; background: rgba(56, 189, 248, 0.1); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; margin: 4px; border: 1px solid rgba(56, 189, 248, 0.1); color: var(--accent); }
+        .contact-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #768390;
+        }
 
-        /* Footer Mini-Verification */
-        footer { padding: 80px 0; text-align: center; background: #010409; }
-        .verify-box { margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
-        .mini-btn { background: transparent; border: 1px solid #334155; color: var(--dim); padding: 8px 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; font-size: 0.8rem; }
-        .mini-btn:hover { border-color: var(--accent); color: var(--accent); }
+        /* Card System */
+        .section-title {
+            color: var(--text-bright);
+            font-size: 1.5rem;
+            margin: 30px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Content Styling */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .role-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .company-name {
+            color: var(--text-bright);
+            font-weight: 500;
+        }
+
+        .date-location {
+            font-size: 0.85rem;
+            color: #768390;
+        }
+
+        .description {
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .skill-badge {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer & Backend */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            color: #768390;
+            font-size: 0.85rem;
+        }
+
+        .status-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: #768390;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .status-btn:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        #api-response {
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.75rem;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div style="font-weight: 900; letter-spacing: 1px;">CHRISTOPHER.A</div>
-        <div>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-        </div>
-    </nav>
-
+<div class="container">
     <header>
         <h1>Christopher Aruldoss</h1>
-        <p class="tagline">Customer Delivery Manager | Solution Architect</p>
-        <p style="color: var(--dim); font-weight: 500;">Dubai, UAE • Golden Visa Holder</p>
+        <div class="subtitle">Customer Delivery Manager | Solution Architect</div>
+        <div class="contact-info">
+            Dubai, UAE • Golden Visa Holder • christopher.aruldoss@gmail.com
+        </div>
     </header>
 
-    <div class="container">
-        <section id="about">
-            <h2><i class="fas fa-rocket"></i> Professional Profile</h2>
-            <div class="exp-card">
-                <p>Accomplished Techno-Commercial leader with a proven track record in orchestrating multi-million dollar portfolios. I specialize in delivering Next-Gen Wi-Fi 6 & 7 solutions and architecting end-to-end IPTV/OTT ecosystems for Tier-1 operators, bridging technical innovation with robust business growth.</p>
-            </div>
-        </section>
+    <div class="section-title"><i class="fas fa-user"></i> About Me</div>
+    <div class="card">
+        <p class="description">
+            Strategic Techno-Commercial leader with over 20 years of experience in the telecom and cloud sectors. 
+            I specialize in orchestrating multi-million dollar portfolios for Tier-1 operators, with a proven track record 
+            of delivering Next-Gen Wi-Fi 6 & 7 solutions and securing over <strong>$70M in new business revenue</strong>.
+        </p>
+    </div>
 
-        <section id="experience">
-            <h2><i class="fas fa-briefcase"></i> Work History</h2>
-            
-            <div class="exp-card">
-                <span class="date">Jan 2024 - Present</span>
-                <h3>Customer Project Manager | Vantiva Technologies</h3>
-                <p style="color: var(--dim); margin-bottom: 15px;">Dubai, UAE</p>
-                <ul>
-                    <li>Managing a $15M Portfolio, delivering Next-Gen Wi-Fi 6 & 7 solutions (Residential, FWA, and Mesh) to Tier-1 operators.</li>
-                    <li>Directly overseeing 7 broadband product lines and a fleet of 1M+ devices.</li>
-                    <li>Leading cross-functional teams of 30+ resources across delivery, NOC, and vendor management.</li>
-                </ul>
+    <div class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</div>
+    
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <div class="role-title">Customer Project Manager</div>
+                <div class="company-name">Vantiva Technologies</div>
             </div>
+            <div class="date-location">Jan 2024 — Present<br>Dubai, UAE</div>
+        </div>
+        <p class="description">
+            Directly overseeing a <strong>$15M Portfolio</strong> focusing on Next-Gen Broadband solutions. 
+            Managing the end-to-end lifecycle for 7 product lines and a fleet of over 1M+ devices across 
+            diverse software ecosystems including RDK-B and Android AOSP.
+        </p>
+        <div class="skills-container">
+            <span class="skill-badge">P&L Management</span>
+            <span class="skill-badge">Wi-Fi 7</span>
+            <span class="skill-badge">FWA</span>
+            <span class="skill-badge">Lifecycle Strategy</span>
+        </div>
+    </div>
 
-            <div class="exp-card">
-                <span class="date">June 2011 - Dec 2023</span>
-                <h3>Senior Solution Architect | Huawei Technologies</h3>
-                <p style="color: var(--dim); margin-bottom: 15px;">Dubai, UAE</p>
-                <ul>
-                    <li>Secured $70M in new business through complex RFP responses and bespoke IPTV/OTT architectures.</li>
-                    <li>Architected end-to-end ecosystems integrating On-Prem Cloud and Big Data Analytics for real-time CX dashboards.</li>
-                    <li>Expertise in BSS/OSS integration, churn management, and AI-powered recommendation engines.</li>
-                </ul>
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <div class="role-title">Senior Solution Architect</div>
+                <div class="company-name">Huawei Technologies</div>
             </div>
+            <div class="date-location">2011 — 2023<br>Dubai, UAE</div>
+        </div>
+        <p class="description">
+            Architected comprehensive IPTV/OTT ecosystems for Tier-1 operators. Led high-stakes RFP responses 
+            that secured $70M in revenue by integrating complex Big Data Analytics and AI-driven 
+            recommendation engines into operator stacks.
+        </p>
+        <div class="skills-container">
+            <span class="skill-badge">IPTV/OTT</span>
+            <span class="skill-badge">Big Data</span>
+            <span class="skill-badge">BSS/OSS Integration</span>
+            <span class="skill-badge">RFP Leadership</span>
+        </div>
+    </div>
 
-            <div class="exp-card">
-                <span class="date">Sep 2008 - May 2011</span>
-                <h3>Technical Lead | Huawei Technologies</h3>
-                <p style="color: var(--dim); margin-bottom: 15px;">Bangalore, India</p>
-                <ul>
-                    <li>Spearheaded design and deployment of VAS infrastructure including SMSC, MMSC, and LBA for BSNL Phase 5.</li>
-                </ul>
-            </div>
-        </section>
+    <div class="section-title"><i class="fas fa-code"></i> Technical Expertise</div>
+    <div class="card">
+        <div class="skills-container">
+            <span class="skill-badge">TR-069 / USP</span>
+            <span class="skill-badge">Docker</span>
+            <span class="skill-badge">IPv4/IPv6</span>
+            <span class="skill-badge">OpenWrt</span>
+            <span class="skill-badge">Alibaba Cloud</span>
+            <span class="skill-badge">Azure</span>
+            <span class="skill-badge">SMSC/VAS</span>
+            <span class="skill-badge">Churn Management</span>
+        </div>
+    </div>
 
-        <section id="skills">
-            <h2><i class="fas fa-tools"></i> Expertise & Certifications</h2>
-            <div class="skills-grid">
-                <div class="skill-list">
-                    <h4>Broadband & Video</h4>
-                    <span class="tag">Wi-Fi 7 / 6 / Mesh</span>
-                    <span class="tag">Fixed Wireless Access (FWA)</span>
-                    <span class="tag">Huawei IPTV/OTT</span>
-                    <span class="tag">RDK-B & OpenWrt</span>
-                    <span class="tag">TR-069 / TR-369</span>
-                </div>
-                <div class="skill-list">
-                    <h4>Cloud & AI</h4>
-                    <span class="tag">Alibaba Cloud</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">AWS AI Practitioner (In Prep)</span>
-                    <span class="tag">Containerization (Docker)</span>
-                    <span class="tag">Big Data Analytics</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <h2><i class="fas fa-graduation-cap"></i> Academic Foundation</h2>
-            <div class="skills-grid">
-                <div class="skill-list">
-                    <strong>MBA in Marketing</strong>
-                    <p style="font-size: 0.85rem; color: var(--dim); margin: 5px 0 0;">Bharthidasan University</p>
-                </div>
-                <div class="skill-list">
-                    <strong>Bachelor of Engineering (ECE)</strong>
-                    <p style="font-size: 0.85rem; color: var(--dim); margin: 5px 0 0;">Karunya Institute of Technology</p>
-                </div>
-            </div>
-        </section>
+    <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
+    <div class="card">
+        <div class="company-name">MBA in Marketing</div>
+        <div class="date-location">Bharthidasan University</div>
+        <div class="company-name" style="margin-top: 10px;">B.E. in Electronics & Communication</div>
+        <div class="date-location">Karunya Institute of Technology</div>
     </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Christopher Aruldoss | christopher.aruldoss@gmail.com</p>
-            <div class="verify-box">
-                <button class="mini-btn" onclick="verifySystem()">Verify Alibaba Cloud Backend</button>
-                <p id="status-log" style="font-size: 0.7rem; color: #475569; margin-top: 10px;">Ready</p>
-            </div>
-        </div>
+        <p>&copy; 2026 Christopher Aruldoss | Built with GitHub Pages</p>
+        <button class="status-btn" onclick="checkCloud()">Ping Alibaba Cloud Backend</button>
+        <div id="api-response">System Idle</div>
     </footer>
+</div>
 
-    <script>
-        async function verifySystem() {
-            const log = document.getElementById('status-log');
-            log.innerText = "Syncing with Alibaba Cloud Function Compute...";
-            
-            // REPLACE THIS with your actual Alibaba .fcapp.run URL
-            const url = "https://my-portfunction-xlswldvzbj.ap-southeast-1.fcapp.run";
+<script>
+    async function checkCloud() {
+        const out = document.getElementById('api-response');
+        out.innerText = "Connecting...";
+        
+        // REPLACE WITH YOUR ACTUAL ALIBABA URL
+        const url = "https://my-portfunction-xlswldvzbj.ap-southeast-1.fcapp.run";
 
-            try {
-                const res = await fetch(url);
-                const data = await res.json();
-                log.innerText = "Backend Active: " + data.message + " (" + data.timestamp + ")";
-                log.style.color = "#38bdf8";
-            } catch (e) {
-                log.innerText = "Offline: Check your Alibaba Backend URL.";
-                log.style.color = "#ef4444";
-            }
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            out.innerText = "Status: " + data.message + " | " + data.timestamp;
+            out.style.color = "#58a6ff";
+        } catch (e) {
+            out.innerText = "Connection Failed: Ensure CORS is enabled on Alibaba.";
+            out.style.color = "#f85149";
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
